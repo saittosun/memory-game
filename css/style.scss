@@ -1,0 +1,108 @@
+@import "./base/reset";
+@import "./base/fonts";
+@import "./base/variables";
+@import "./base/mixins";
+@import "../node_modules/font-awesome/css/font-awesome.css";
+@import "../node_modules/sweetalert2/src/sweetalert2.scss";
+
+body {
+  width: 100vh;
+  // max-width: 100%;
+  height: 100vh;
+  background: rgb(132, 144, 197);
+  // font-family: "FontAwesome";
+  margin: 0 auto;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  background-color: #9cc2d3;
+  width: 90%;
+  min-width: 220px;
+  font-family: Helvetica, sans-serif;
+  border: 2px solid #7fb7c5;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  color: rgb(14, 13, 13);
+  font-weight: bolder;
+  font-size: 20px;
+  button {
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin: 4px 0;
+    font-size: 14px;
+    font-weight: bolder;
+  }
+}
+
+div#memory_cardHolder {
+  margin: 0 auto;
+  padding-top: 20px;
+  .memory {
+    width: 100%;
+    max-width: 600px;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    background: rgb(145, 145, 226);
+    border: 3px solid #cce3e9;
+    border-radius: 5px;
+    &__card {
+      width: calc(25% - 10px);
+      // height: calc(25% - 10px);
+      margin: 5px;
+      background-image: url("../assets/meraki.jpg");
+      position: relative;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-blend-mode: color-dodge;
+      border-radius: 5px;
+      transform: scale(1);
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      line-height: 2.5; // border: 0.1px solid black;
+      &__front {
+        width: 100%;
+        height: 100%;
+        padding: 29px;
+        border-radius: 5px;
+        background: #1c7ccc;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+        &::before {
+          position: absolute;
+          top: 20%;
+          left: 25%;
+          font-size: 80px;
+        }
+      }
+      &:active {
+        transform: scale(0.97);
+        transition: transform 0.1s;
+      }
+      &--flipped {
+        transform: rotateY(180deg);
+      }
+      &--matched {
+        background: rgb(50, 104, 205);
+        backface-visibility: visible;
+        color: rgb(22, 21, 21);
+      }
+    }
+  }
+}
+// @media screen and (max-width: 400) {
+//   div#memory_cardHolder,
+//   section {
+//     width: 70%;
+//   }
+// }
